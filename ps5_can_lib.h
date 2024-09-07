@@ -43,7 +43,7 @@ public:
 
     PS5(CAN &can,int node);
     
-    int get_data(bool*,int*,bool*);
+    int get_data(bool*,int*,bool*,CANMessage _msg);
     
 
 private:
