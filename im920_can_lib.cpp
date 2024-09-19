@@ -22,24 +22,24 @@ can920::can920(CAN &can,int node)
     can.write(msg_node);
 }
 
-int can920::get_data(int *button,bool *stop_emer)
+int can920::get_data(int *button,bool *stop_emer,CANMessage _msg)
 {
-    CANMessage _msg;
+    
 
-    if(_can.read(_msg)){
+    // if(_can.read(_msg)){
         if(_msg.id==0x10+_node){
             for(int i=0;i<8;i++)_input[i]=(int)_msg.data[i];
             return calculate(_input,button,stop_emer);  
         }
-    }
+    // }
     return 0;
 }
 
-int can920::get_data(int *button,bool *stop_emer,int *data)
+int can920::get_data(int *button,bool *stop_emer,int *data,CANMessage _msg)
 {
-    CANMessage _msg;
+    
 
-    if(_can.read(_msg)){
+    // if(_can.read(_msg)){
         if(_msg.id==0x10+_node){
             for(int i=0;i<8;i++)_input[i]=(int)_msg.data[i];
             return calculate(_input,button,stop_emer);  
@@ -50,7 +50,7 @@ int can920::get_data(int *button,bool *stop_emer,int *data)
                 printf("%d ",data[j]);
             }printf("\r\n");
         }
-    }
+    // }
     return 0;
 }
 
